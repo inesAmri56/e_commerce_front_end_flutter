@@ -1,9 +1,12 @@
 import 'package:ecommerce/screens/forget_password.dart';
+import 'package:ecommerce/screens/signup_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../constants/app_colors.dart';
+import '../widgets/appbuttom_navigationbar.dart';
 import '../widgets/button_widget.dart';
+import 'home.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -97,7 +100,15 @@ class LoginScreen extends StatelessWidget {
                       Button(
                         text: "Log In ",
                         color: AppColors.green,
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => AppButtomNavigationBar(initialIndex:0),
+                              ),
+                              (route)=>false);
+                        },
+
                       ),
                       const SizedBox(height: 30),
                       const Text(
@@ -132,11 +143,11 @@ class LoginScreen extends StatelessWidget {
                             onTap: () {
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => LoginScreen()),
+                                MaterialPageRoute(builder: (context) => SignUpScreen()),
                               );
                             },
                             child: const Text(
-                              "Log In",
+                              "Sign Up",
                               style: TextStyle(
                                 color: AppColors.green,
                                 fontWeight: FontWeight.bold,
