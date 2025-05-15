@@ -1,8 +1,9 @@
 import 'package:ecommerce/screens/login_screen.dart';
 import 'package:ecommerce/widgets/appbuttom_navigationbar.dart';
-import 'package:ecommerce/widgets/containerslist.dart';
+
 import 'package:flutter/material.dart';
 import '../constants/app_colors.dart';
+import '../widgets/containerlist.dart';
 import '../widgets/promo_card_widget.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -12,9 +13,12 @@ class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
 
   final List<Map<String, dynamic>> items = [
-    {"name": "Swatch", "image": "assets/swatch.png","price":130.0,"description":"This high-quality product combines style and functionality,perfect for everyday use. Crafted with care to meet your expectations"},
-    {"name": "Bag", "image": "assets/bags.png","price":140.0,"description":"This high-quality product combines style and functionality,perfect for everyday use. Crafted with care to meet your expectations"},
-    {"name": "Swatch", "image": "assets/swatch.png","price":140.0,"description":"This high-quality product combines style and functionality,perfect for everyday use. Crafted with care to meet your expectations"},
+    {"name": "Swatch", "image": "assets/swatch.png","price":130.0,
+      "description":"This high-quality product combines style and functionality,perfect for everyday use. Crafted with care to meet your expectations"},
+    {"name": "Bag", "image": "assets/bags.png","price":140.0,
+      "description":"This high-quality product combines style and functionality,perfect for everyday use. Crafted with care to meet your expectations"},
+    {"name": "Swatch", "image": "assets/swatch.png","price":140.0,
+      "description":"This high-quality product combines style and functionality,perfect for everyday use. Crafted with care to meet your expectations"},
     {"name": "Shoes", "image": "assets/shoes.png","price":140.0,"description":"This high-quality product combines style and functionality,perfect for everyday use. Crafted with care to meet your expectations"},
     {"name": "Bag", "image": "assets/bags.png","price":140.0,"description":"This high-quality product combines style and functionality,perfect for everyday use. Crafted with care to meet your expectations"},
     {"name": "T-shirt", "image": "assets/tshirt-.png","price":140.0,"description":"This high-quality product combines style and functionality,perfect for everyday use. Crafted with care to meet your expectations"},
@@ -27,7 +31,7 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: AppColors.purple,
-        title: Text('Home'),
+        title: const  Text('Home'),
         leading: Builder(
           builder: (context) => IconButton(
             icon: const Icon(Icons.grid_view_rounded, color: AppColors.green),
@@ -36,8 +40,8 @@ class HomeScreen extends StatelessWidget {
         ),
         actions: [
           IconButton(
-              onPressed: () {}, icon: Icon(Icons.shopping_cart, color: AppColors.green)),
-          CircleAvatar(backgroundImage: AssetImage("assets/avatar.jpg")),
+              onPressed: () {}, icon: const  Icon(Icons.shopping_cart, color: AppColors.green)),
+          const CircleAvatar(backgroundImage: AssetImage("assets/avatar.jpg")),
         ],
       ),
 
@@ -78,7 +82,7 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Search + Filter
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -114,8 +118,6 @@ class HomeScreen extends StatelessWidget {
               ),
 
               SizedBox(height: 30),
-
-              // Promo Carousel
               SizedBox(
                 height: 150,
                 child: PageView(
@@ -126,7 +128,6 @@ class HomeScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(height: 10),
               SmoothPageIndicator(
                 controller: _pageController,
                 count: 2,
@@ -136,6 +137,7 @@ class HomeScreen extends StatelessWidget {
                   dotWidth: 8,
                 ),
               ),
+              SizedBox(height: 10),
 
               SizedBox(height: 30),
               Text("Recommended", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
@@ -153,6 +155,7 @@ class HomeScreen extends StatelessWidget {
                         name: item["name"] ?? "not found",
                         image: item["image"] ?? "image not found",
                         price: item["price"] ,
+                        showIcons: true,
 
                       ),
                     );
@@ -228,6 +231,7 @@ class HomeScreen extends StatelessWidget {
           child: ContainerList(name: item["name"] ?? "not found",
             image: item["image"] ?? "image not found",
             price: item["price"],
+            showIcons: true,
           ),
         );
       }, gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2 ,
