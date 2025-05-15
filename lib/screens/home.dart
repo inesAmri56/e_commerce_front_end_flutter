@@ -3,7 +3,7 @@ import 'package:ecommerce/widgets/appbuttom_navigationbar.dart';
 
 import 'package:flutter/material.dart';
 import '../constants/app_colors.dart';
-import '../widgets/containerlist.dart';
+import '../widgets/containerslist.dart';
 import '../widgets/promo_card_widget.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -155,7 +155,7 @@ class HomeScreen extends StatelessWidget {
                         name: item["name"] ?? "not found",
                         image: item["image"] ?? "image not found",
                         price: item["price"] ,
-                        showIcons: true,
+
 
                       ),
                     );
@@ -231,7 +231,7 @@ class HomeScreen extends StatelessWidget {
           child: ContainerList(name: item["name"] ?? "not found",
             image: item["image"] ?? "image not found",
             price: item["price"],
-            showIcons: true,
+
           ),
         );
       }, gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2 ,
