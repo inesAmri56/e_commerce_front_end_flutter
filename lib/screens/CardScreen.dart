@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../constants/app_colors.dart';
+import '../widgets/circularbutton.dart';
 
 class CardScreen extends StatefulWidget {
   const CardScreen({super.key});
@@ -143,34 +144,35 @@ class _CardScreenState extends State<CardScreen> {
                       ),
                       Row(
                         children: [
-                          _buildCircleButton("-", () {
+                          BuildCircleButton("-", () {
                             setState(() {
                               if (items[index]["count"] > 0) {
                                 items[index]["count"]--;
                               } else {
                                 showDialog(
                                   context: context,
-                                  builder: (_) => AlertDialog(
-                                    title: const Text(
-                                        "Would you like to remove this product?"),
-                                    actions: [
-                                      TextButton(
-                                        onPressed: () {
-                                          Navigator.of(context).pop();
-                                        },
-                                        child: const Text("No"),
+                                  builder: (_) =>
+                                      AlertDialog(
+                                        title: const Text(
+                                            "Would you like to remove this product?"),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              Navigator.of(context).pop();
+                                            },
+                                            child: const Text("No"),
+                                          ),
+                                          TextButton(
+                                            onPressed: () {
+                                              setState(() {
+                                                items.removeAt(index);
+                                              });
+                                              Navigator.of(context).pop();
+                                            },
+                                            child: const Text("Remove"),
+                                          ),
+                                        ],
                                       ),
-                                      TextButton(
-                                        onPressed: () {
-                                          setState(() {
-                                            items.removeAt(index);
-                                          });
-                                          Navigator.of(context).pop();
-                                        },
-                                        child: const Text("Remove"),
-                                      ),
-                                    ],
-                                  ),
                                 );
                               }
                             });
@@ -179,7 +181,7 @@ class _CardScreenState extends State<CardScreen> {
                           Text("${items[index]["count"]}",
                               style: const TextStyle(fontSize: 18)),
                           const SizedBox(width: 10),
-                          _buildCircleButton("+", () {
+                          BuildCircleButton("+", () {
                             setState(() {
                               if (items[index]["count"] <
                                   items[index]["stock"]) {
@@ -187,16 +189,18 @@ class _CardScreenState extends State<CardScreen> {
                               } else {
                                 showDialog(
                                   context: context,
-                                  builder: (_) => AlertDialog(
-                                    title: const Text("You passed the stock"),
-                                    actions: [
-                                      IconButton(
-                                          onPressed: () {
-                                            Navigator.pop(context);
-                                          },
-                                          icon: const Icon(Icons.done))
-                                    ],
-                                  ),
+                                  builder: (_) =>
+                                      AlertDialog(
+                                        title: const Text(
+                                            "You passed the stock"),
+                                        actions: [
+                                          IconButton(
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                              },
+                                              icon: const Icon(Icons.done))
+                                        ],
+                                      ),
                                 );
                               }
                             });
@@ -272,31 +276,5 @@ class _CardScreenState extends State<CardScreen> {
       ),
     );
   }
-
-  Widget _buildCircleButton(String label, VoidCallback onTap) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        width: 30,
-        height: 30,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: Colors.grey.shade300,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.shade400,
-              blurRadius: 4,
-              offset: const Offset(2, 2),
-            ),
-          ],
-        ),
-        child: Center(
-          child: Text(
-            label,
-            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
-        ),
-      ),
-    );
-  }
 }
+
