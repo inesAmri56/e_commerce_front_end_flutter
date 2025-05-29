@@ -28,6 +28,11 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  get: 4.6.6
+  smooth_page_indicator: ^1.1.0
+  image_picker: 1.0.8
+  dio: ^5.8.0+1
+  get_storage: ^2.1.1
   flutter:
     sdk: flutter
 

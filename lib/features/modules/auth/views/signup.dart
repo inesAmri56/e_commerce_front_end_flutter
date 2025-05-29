@@ -1,18 +1,16 @@
-import 'package:ecommerce/screens/forget_password.dart';
-import 'package:ecommerce/screens/signup_screen.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:ecommerce/features/modules/auth/controllers/auth_controller.dart';
+import 'package:ecommerce/features/modules/auth/views/login__view.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-import '../constants/app_colors.dart';
-import '../widgets/appbuttom_navigationbar.dart';
-import '../widgets/button_widget.dart';
-import 'home.dart';
+import '../../../../core/constants/app_colors.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+import '../../../../widgets/button_widget.dart';
 
+class SignUpView extends GetView<AuthController>{
+  SignUpView({Key? key}) : super(key: key);
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context){
     return  Scaffold(
       body: Container(
         color: AppColors.purple,
@@ -34,10 +32,23 @@ class LoginScreen extends StatelessWidget {
                 ),
                 width: double.infinity,
                 child: Padding(
-                  padding: const EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(20.0),
                   child: Column(
                     children: [
-
+                      TextFormField(
+                        decoration: InputDecoration(
+                          filled: true,
+                          fillColor: Colors.grey[200],
+                          contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                          labelText: "Full Name",
+                          labelStyle: const TextStyle(color: Colors.grey),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: BorderSide.none
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 15),
                       TextFormField(
                         validator: (value) {
                           // Validation de l'email avec RegExp
@@ -63,8 +74,7 @@ class LoginScreen extends StatelessWidget {
                           ),
                         ),
                       ),
-
-                      const SizedBox(height: 20),
+                      const SizedBox(height: 15),
                       TextField(
 
                         obscureText: true,
@@ -72,43 +82,25 @@ class LoginScreen extends StatelessWidget {
                           contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                           filled: true,
                           fillColor: Colors.grey[200],
-
                           suffixIcon: const Icon(Icons.visibility),
                           labelText: "Password",
                           labelStyle: const TextStyle(color: Colors.grey),
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide: BorderSide.none
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: BorderSide.none
                           ),
                         ),
                       ),
-                      SizedBox(height: 10,),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            GestureDetector(
-                              onTap: (){
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(builder: (context) =>ForgotPassWord()),
-                                );
-                              },
-                                child:const Text("Forgot Password?"))
-                          ],
-                      ),
-                      const SizedBox(height: 40),
+                      const SizedBox(height: 15),
                       Button(
-                        text: "Log In ",
+                        text: "Sign Up",
                         color: AppColors.green,
                         onPressed: () {
-                          Navigator.pushAndRemoveUntil(
-                              context,
-                              MaterialPageRoute(
-                                builder: (_) => AppButtomNavigationBar(initialIndex:0),
-                              ),
-                              (route)=>false);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => LoginView()),
+                          );
                         },
-
                       ),
                       const SizedBox(height: 30),
                       const Text(
@@ -123,6 +115,7 @@ class LoginScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Image.asset("assets/google.png", width: 50),
+
                           Image.asset("assets/fb.png", width: 50),
                         ],
                       ),
@@ -143,11 +136,11 @@ class LoginScreen extends StatelessWidget {
                             onTap: () {
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => SignUpScreen()),
+                                MaterialPageRoute(builder: (context) => LoginView()),
                               );
                             },
                             child: const Text(
-                              "Sign Up",
+                              "Log In",
                               style: TextStyle(
                                 color: AppColors.green,
                                 fontWeight: FontWeight.bold,

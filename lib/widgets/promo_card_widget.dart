@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../constants/app_colors.dart';
-
+import '../core/constants/app_colors.dart';
 Widget promoCard(String text, String imagePath) {
   return Container(
     margin: EdgeInsets.only(right: 10),

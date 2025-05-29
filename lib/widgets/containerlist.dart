@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../constants/app_colors.dart';
 
 class ContainerList extends StatelessWidget {
   final String name;
@@ -26,7 +25,7 @@ class ContainerList extends StatelessWidget {
           BoxShadow(color: Colors.black12, blurRadius: 4, offset: Offset(2, 2)),
         ],
       ),
-      child: Stack(
+      child: Column(
         children: [
           Center(
             child: ClipRRect(

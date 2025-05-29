@@ -1,22 +1,21 @@
 
-import 'package:ecommerce/screens/CardScreen.dart';
-import 'package:ecommerce/screens/home.dart';
-import 'package:ecommerce/screens/profile_screen.dart';
+import 'package:ecommerce/features/modules/cardscreen/views/cardscreen_view.dart';
+import 'package:ecommerce/features/modules/favorites/views/favorites_view.dart';
+import 'package:ecommerce/features/modules/home/views/home_view.dart';
+import 'package:ecommerce/features/modules/profile/views/profile_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import '../constants/app_colors.dart';
-import '../screens/favouriteScreen.dart';
+import '../core/constants/app_colors.dart';
 
 class AppButtomNavigationBar extends StatefulWidget {
   final int initialIndex;
   AppButtomNavigationBar({super.key, this.initialIndex = 0});
 
   final List<Widget> screens = [
-    HomeScreen(),
-    FavoriteScreen(),
-    CardScreen(),
-    ProfileScreen(),
+    HomeView(),
+    FavoritesView(),
+    CardscreenView(),
+    ProfileView(),
   ];
 
   @override

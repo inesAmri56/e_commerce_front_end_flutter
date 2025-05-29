@@ -1,4 +1,7 @@
+
 import 'package:flutter/material.dart';
+
+import '../core/constants/app_colors.dart';
 
 Widget buildFavouriteItem({
   required String image,
@@ -6,7 +9,7 @@ Widget buildFavouriteItem({
   required String title,
 }) {
   return Padding(
-    padding: const EdgeInsets.all(10),
+    padding: const EdgeInsets.all(4),
     child: SizedBox(
       width: double.infinity,
       height: 100,
@@ -54,11 +57,19 @@ Widget buildFavouriteItem({
             ),
           ),
           const Spacer(),
-          const Icon(
-            Icons.favorite,
-            color: Colors.red,
-            size: 30,
-          ),
+           Container(
+             height: 40,
+             decoration: BoxDecoration(
+               borderRadius: BorderRadius.circular(10),
+               color: Colors.grey[200],
+
+
+             ),
+             
+             child: TextButton(onPressed: (){},
+                 child: Text("Add To Card",style: TextStyle(
+                   color: AppColors.green,))),
+           )
         ],
       ),
     ),

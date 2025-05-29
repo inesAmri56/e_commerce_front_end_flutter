@@ -1,14 +1,14 @@
-import 'package:ecommerce/screens/initialisation_password.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-import '../constants/app_colors.dart';
-import '../widgets/button_widget.dart';
-import 'login_screen.dart';
+import '../../../../core/constants/app_colors.dart';
+import '../../../../widgets/button_widget.dart';
+import '../../login/views/login_view.dart';
+import '../controllers/auth_controller.dart';
 
-class VerifCode extends StatelessWidget {
-  const VerifCode({super.key});
-
+class InitializatioPasswordView extends GetView<AuthController> {
+  InitializatioPasswordView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +21,7 @@ class VerifCode extends StatelessWidget {
               width: MediaQuery.sizeOf(context).width*.4,
             ),
             SizedBox(height: 20,),
-            Text("Enter Your Code",style: TextStyle(
+            Text("Enter Your Password ",style: TextStyle(
               fontSize: 18,
             ),),
             SizedBox(height: 40,),
@@ -29,12 +29,31 @@ class VerifCode extends StatelessWidget {
 
               padding: const EdgeInsets.symmetric(horizontal: 8),
               child: TextFormField(
+                obscureText: true,
 
                 decoration: InputDecoration(
                   contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                   filled: true,
                   fillColor: Colors.grey[200],
-                  labelText: "Code ",
+                  labelText: "password ",
+                  labelStyle: const TextStyle(color: Colors.grey),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide.none,
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(height: 20,),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              child: TextFormField(
+                obscureText: true,
+                decoration: InputDecoration(
+                  contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                  filled: true,
+                  fillColor: Colors.grey[200],
+                  labelText: " Confirm password ",
                   labelStyle: const TextStyle(color: Colors.grey),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
@@ -44,10 +63,10 @@ class VerifCode extends StatelessWidget {
               ),
             ),
             SizedBox(height: 30,),
-            Button(text: "Verify Code ",color: AppColors.green, onPressed:(){
+            Button(text: "Submit ",color: AppColors.green, onPressed:(){
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => InitialisationPassword()),
+                MaterialPageRoute(builder: (context) => LoginView()),
               );
             },),
             SizedBox(height: 20,),
@@ -55,7 +74,7 @@ class VerifCode extends StatelessWidget {
               onTap: (){
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => LoginScreen()),
+                  MaterialPageRoute(builder: (context) => LoginView()),
                 );
               },
               child: Text("Back to Login "),
@@ -65,4 +84,4 @@ class VerifCode extends StatelessWidget {
       ),
     );
   }
-}
+  }
